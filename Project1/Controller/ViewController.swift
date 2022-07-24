@@ -13,11 +13,7 @@ class ViewController: UIViewController {
     var selectedProductIndex = -1
     @IBOutlet weak var tableView: UITableView!
     
-    var messages = [
-        "This is the 1st product",
-        "This is the second product",
-        "This is the third product"
-    ]
+    var products = ProductDatabase()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +23,16 @@ class ViewController: UIViewController {
         tableView.delegate = self
         
         tableView.register(UINib(nibName: "CustomProductCell", bundle: nil), forCellReuseIdentifier: "ProductCell")
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Inside and before the view will appear function")
+        tableView.reloadData()
+        super.viewWillAppear(animated)
+        print(products.productArr[0])
+        print("Inside and after the view will appear function")
+        
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -41,6 +47,7 @@ class ViewController: UIViewController {
         if segue.identifier == "goToDetailsPage"{
             let detailsPageVC = segue.destination as! DetailPageViewController
             detailsPageVC.productId = self.selectedProductIndex
+            detailsPageVC.products = self.products
         }
     }
 
@@ -51,13 +58,14 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return products.productArr.count
     }
     
     //This method will return a UITableViewCell that it should display in each and every row of our tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! CustomProductCell
-        cell.productLabel.text = messages[indexPath.row]
+        cell.productLabel.text = products.productArr[indexPath.row].name
+        print("Inside cellForRow and value is \(products.productArr[indexPath.row].name)")
         return cell
     }
  

@@ -10,6 +10,7 @@
 		36274D98288ABD5C00702020 /* CustomProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36274D96288ABD5B00702020 /* CustomProductCell.swift */; };
 		36274D99288ABD5C00702020 /* CustomProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36274D97288ABD5B00702020 /* CustomProductCell.xib */; };
 		36274D9F288BC4A400702020 /* DetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36274D9E288BC4A400702020 /* DetailPageViewController.swift */; };
+		36274DA1288C7F4E00702020 /* ProductDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36274DA0288C7F4D00702020 /* ProductDatabase.swift */; };
 		36643A8D288A884C00AE13AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36643A8C288A884C00AE13AE /* AppDelegate.swift */; };
 		36643A8F288A884C00AE13AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36643A8E288A884C00AE13AE /* SceneDelegate.swift */; };
 		36643A91288A884C00AE13AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36643A90288A884C00AE13AE /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 		36274D96288ABD5B00702020 /* CustomProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProductCell.swift; sourceTree = "<group>"; };
 		36274D97288ABD5B00702020 /* CustomProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomProductCell.xib; sourceTree = "<group>"; };
 		36274D9E288BC4A400702020 /* DetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageViewController.swift; sourceTree = "<group>"; };
+		36274DA0288C7F4D00702020 /* ProductDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDatabase.swift; sourceTree = "<group>"; };
 		36643A89288A884C00AE13AE /* Project1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36643A8C288A884C00AE13AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36643A8E288A884C00AE13AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				36643ABF288A989000AE13AE /* Products.swift */,
+				36274DA0288C7F4D00702020 /* ProductDatabase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36274DA1288C7F4E00702020 /* ProductDatabase.swift in Sources */,
 				36274D9F288BC4A400702020 /* DetailPageViewController.swift in Sources */,
 				36643A91288A884C00AE13AE /* ViewController.swift in Sources */,
 				36643AC0288A989000AE13AE /* Products.swift in Sources */,

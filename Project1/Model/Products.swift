@@ -10,4 +10,9 @@ import UIKit
 
 struct Product{
     
+    let image: UIImage
+    var name: String
+    var description: String
+    
+    
 }
