@@ -21,6 +21,7 @@
 		36643AAE288A884F00AE13AE /* Project1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36643AAD288A884F00AE13AE /* Project1UITests.swift */; };
 		36643AB0288A884F00AE13AE /* Project1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36643AAF288A884F00AE13AE /* Project1UITestsLaunchTests.swift */; };
 		36643AC0288A989000AE13AE /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36643ABF288A989000AE13AE /* Products.swift */; };
+		36EE7B42288F13E0008A8EE5 /* StaticContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE7B41288F13E0008A8EE5 /* StaticContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		36643AAD288A884F00AE13AE /* Project1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project1UITests.swift; sourceTree = "<group>"; };
 		36643AAF288A884F00AE13AE /* Project1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project1UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		36643ABF288A989000AE13AE /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		36EE7B41288F13E0008A8EE5 /* StaticContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			children = (
 				36643ABF288A989000AE13AE /* Products.swift */,
 				36274DA0288C7F4D00702020 /* ProductDatabase.swift */,
+				36EE7B41288F13E0008A8EE5 /* StaticContent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36274DA1288C7F4E00702020 /* ProductDatabase.swift in Sources */,
+				36EE7B42288F13E0008A8EE5 /* StaticContent.swift in Sources */,
 				36274D9F288BC4A400702020 /* DetailPageViewController.swift in Sources */,
 				36643A91288A884C00AE13AE /* ViewController.swift in Sources */,
 				36643AC0288A989000AE13AE /* Products.swift in Sources */,

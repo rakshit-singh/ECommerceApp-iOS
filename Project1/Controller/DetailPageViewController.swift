@@ -13,7 +13,10 @@ class DetailPageViewController: UIViewController {
     
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UITextField!
-    @IBOutlet weak var productDescription: UITextField!
+    
+    
+    @IBOutlet weak var productDescription: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var products: ProductDatabase? = nil
     
@@ -23,8 +26,10 @@ class DetailPageViewController: UIViewController {
         productDescription.delegate = self
         productName.delegate = self
         
-        print("Loaded the Details Page's View Controller")
-        print("The index of the table row selected is \(productId!)")
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object:nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object:nil)
+        
         
         let currProduct = products?.getProduct(productId!)
         
@@ -34,26 +39,25 @@ class DetailPageViewController: UIViewController {
         productDescription.text = currProduct?.description
         
     }
-
+    
+    @objc func keyboardWillAppear(){
+        self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+250)
+    }
+    
+    @objc func keyboardWillDisappear(){
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height-250)
+    }
     
 }
 
-extension DetailPageViewController: UITextFieldDelegate{
+extension DetailPageViewController: UITextFieldDelegate, UITextViewDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-
-        switch textField{
-        case productName:
-            if (productName!.text! != products!.getProduct(self.productId!).name){
-                print("The old product is \(products!.productArr[productId!])")
-                print("Editing the product name field now!!!!")
-                products!.productArr[productId!].name = productName.text!
-                print("The changed text is \(productName.text!)")
-                print(products!.productArr[productId!])
-            }
-        default:
-            if (productDescription.text != products!.getProduct(productId!).description){
-                products!.productArr[productId!].description = productDescription.description
+        
+        
+        if let text = textField.text{
+            if (text != products!.getProduct(productId!).name){
+                products!.productArr[productId!].name = text
             }
         }
     }
@@ -62,5 +66,15 @@ extension DetailPageViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        if let text = textView.text{
+            if (text != products!.getProduct(productId!).description){
+                products!.productArr[productId!].description = textView.text
+            }
+        }
+        textView.resignFirstResponder()
     }
 }

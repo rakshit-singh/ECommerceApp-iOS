@@ -22,21 +22,20 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.register(UINib(nibName: "CustomProductCell", bundle: nil), forCellReuseIdentifier: "ProductCell")
+        tableView.register(UINib(nibName: StaticContent.xibFileName, bundle: nil), forCellReuseIdentifier: StaticContent.cellReUseIdentifier)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("Inside and before the view will appear function")
+        
         tableView.reloadData()
         super.viewWillAppear(animated)
-        print(products.productArr[0])
-        print("Inside and after the view will appear function")
+        
         
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "goToDetailsPage" && self.selectedProductIndex != -1 {
+        if identifier == StaticContent.detailsVCSegueId && self.selectedProductIndex != -1 {
             return true
         }
         return false
@@ -44,10 +43,11 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToDetailsPage"{
-            let detailsPageVC = segue.destination as! DetailPageViewController
-            detailsPageVC.productId = self.selectedProductIndex
-            detailsPageVC.products = self.products
+        if segue.identifier == StaticContent.detailsVCSegueId{
+            if let detailsPageVC = segue.destination as? DetailPageViewController{
+                detailsPageVC.productId = self.selectedProductIndex
+                detailsPageVC.products = self.products
+            }
         }
     }
 
@@ -63,9 +63,11 @@ extension ViewController: UITableViewDataSource{
     
     //This method will return a UITableViewCell that it should display in each and every row of our tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! CustomProductCell
         cell.productLabel.text = products.productArr[indexPath.row].name
-        print("Inside cellForRow and value is \(products.productArr[indexPath.row].name)")
+        cell.productImage.image = products.productArr[indexPath.row].image
+        
         return cell
     }
  
@@ -78,9 +80,8 @@ extension ViewController: UITableViewDelegate{
         self.selectedProductIndex = indexPath.row
         
         tableView.deselectRow(at: indexPath, animated: true)
-//        print("Performing the push segue")
         self.performSegue(withIdentifier: "goToDetailsPage", sender: self)
-//        print("Now popping the segue and returning to the table view")
+
         
         
     }
