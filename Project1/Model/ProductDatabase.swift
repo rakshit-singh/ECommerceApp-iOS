@@ -37,7 +37,7 @@ Swimproof. Most crack-resistant front crystal. Certified IP6X dust resistant1
 Always-On Retina display. Nearly 20% larger than Apple Watch SE
 The larger display enhances the entire experience, making Apple Watch easier to use and read. Series 7 represents our biggest and brightest thinking yet.
 """),
-        Product(image:UIImage(named: "Keyboard")!, name:"Apple MagicKeyboard with TouchID and Numeric Keypad", description:"""
+        Product(image:UIImage(named: "Keyboard")!, name:"Apple MagicKeyboard with TouchID", description:"""
 Model Name - Magic Keyboard with Touch ID and Numeric Keypad for Mac models with Apple silicon - US English - Black Keys,
 Magic Keyboard is available with Touch ID, providing fast, easy and secure authentication for logins and purchases.
 Height: 0.41–1.09 cm (0.16–0.43 inches)
