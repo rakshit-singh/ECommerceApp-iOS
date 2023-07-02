@@ -47,6 +47,7 @@ class ViewController: UIViewController {
             if let detailsPageVC = segue.destination as? DetailPageViewController{
                 detailsPageVC.productId = self.selectedProductIndex
                 detailsPageVC.products = self.products
+                detailsPageVC.productDatabaseDelegate = self
             }
         }
     }
@@ -58,6 +59,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(products.productArr.count)
         return products.productArr.count
     }
     
@@ -81,9 +83,16 @@ extension ViewController: UITableViewDelegate{
         
         tableView.deselectRow(at: indexPath, animated: true)
         self.performSegue(withIdentifier: "goToDetailsPage", sender: self)
-
-        
         
     }
+    
+}
+
+extension ViewController: ProductDatabaseDelegate{
+    func didChangeproductDatabase(database: ProductDatabase) {
+        self.products = database
+    }
+    
+    
     
 }

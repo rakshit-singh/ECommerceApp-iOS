@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ProductDatabase{
+struct ProductDatabase{
     
     var productArr: [Product] = [
         Product(image:UIImage(named: "iphone13-Blue")!, name:"IPhone 13 Pro Max 256 GB - Sierra Blue", description:"""
@@ -51,5 +51,12 @@ Weight: 0.369 kg (0.81 pounds)
     func getProduct(_ index: Int) -> Product{
         return self.productArr[index]
     }
+    
+}
+
+
+protocol ProductDatabaseDelegate{
+    
+    func didChangeproductDatabase(database: ProductDatabase)
     
 }

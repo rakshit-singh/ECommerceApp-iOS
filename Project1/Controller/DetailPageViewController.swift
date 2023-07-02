@@ -10,6 +10,7 @@ import UIKit
 class DetailPageViewController: UIViewController {
     
     var productId: Int?
+    var productDatabaseDelegate: ProductDatabaseDelegate?
     
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UITextField!
@@ -22,7 +23,7 @@ class DetailPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("The content size when view is initially loaded is \(scrollView.contentSize)")
         productDescription.delegate = self
         productName.delegate = self
         
@@ -41,11 +42,13 @@ class DetailPageViewController: UIViewController {
     }
     
     @objc func keyboardWillAppear(){
+        print("Content Size here is: \(scrollView.contentSize)")
         self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+250)
     }
     
     @objc func keyboardWillDisappear(){
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height-250)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        print("Content Size is: \(scrollView.contentSize)")
     }
     
 }
@@ -60,6 +63,7 @@ extension DetailPageViewController: UITextFieldDelegate, UITextViewDelegate{
                 products!.productArr[productId!].name = text
             }
         }
+        productDatabaseDelegate?.didChangeproductDatabase(database: products!)
     }
     
     //makes the keyboard go away whne the user presses the return/enter key on the keyboard
@@ -75,6 +79,7 @@ extension DetailPageViewController: UITextFieldDelegate, UITextViewDelegate{
                 products!.productArr[productId!].description = textView.text
             }
         }
+        productDatabaseDelegate?.didChangeproductDatabase(database: products!)
         textView.resignFirstResponder()
     }
 }
